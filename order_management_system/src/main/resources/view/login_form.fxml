@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="820.0" prefWidth="1310.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+    <children>
+        <ImageView fitHeight="820.0" fitWidth="1310.0">
+            <image>
+                <Image url="@../img/LoginImg.png" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="333.0" layoutY="180.0" prefHeight="475.0" prefWidth="644.0" style="-fx-background-color: White; -fx-opacity: 0.8;" styleClass="card-panel" stylesheets="@../styles/style.css">
+            <children>
+                <ImageView fitHeight="51.0" fitWidth="57.0" layoutX="199.0" layoutY="76.0">
+                    <image>
+                        <Image url="@img/cart.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="65.0" fitWidth="70.0" layoutX="182.0" layoutY="70.0">
+                    <image>
+                        <Image url="@../img/cart.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="264.0" layoutY="89.0" prefHeight="35.0" prefWidth="233.0" text="GROCERY HUB">
+                    <font>
+                        <Font name="Arial Bold" size="28.0" />
+                    </font>
+                </Label>
+                <Label layoutX="229.0" layoutY="148.0" prefHeight="35.0" prefWidth="204.0" text="Welcome Back">
+                    <font>
+                        <Font name="American Typewriter Bold" size="26.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtUsername" layoutX="148.0" layoutY="213.0" prefHeight="38.0" prefWidth="350.0" promptText="Username" style="-fx-border-color: Black; -fx-background-color: White;" />
+                <PasswordField fx:id="txtPassword" layoutX="146.0" layoutY="279.0" prefHeight="38.0" prefWidth="350.0" promptText="Password" style="-fx-border-color: Black; -fx-background-color: White;" />
+                <Button layoutX="255.0" layoutY="358.0" mnemonicParsing="false" onAction="#btnLogInOnAction" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: navy;" text="Login In " textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
