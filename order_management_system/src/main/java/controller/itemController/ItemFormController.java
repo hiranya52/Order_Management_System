@@ -1,12 +1,26 @@
 package controller.itemController;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.dto.ItemDTO;
+import service.impl.ItemService;
+import service.impl.ItemServiceImpl;
 
-public class ItemFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ItemFormController implements Initializable {
+
+    ObservableList<ItemDTO> itemDTOS = FXCollections.observableArrayList();
+
+    ItemService itemService = new ItemServiceImpl();
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -24,7 +38,7 @@ public class ItemFormController {
     private TableColumn<?, ?> colUnitPrice;
 
     @FXML
-    private TableView<?> tblItemInfo;
+    private TableView<ItemDTO> tblItemInfo;
 
     @FXML
     private TextField txtDescription;
@@ -44,11 +58,21 @@ public class ItemFormController {
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
+        String itemCode = txtItemCode.getText();
+        String description = txtDescription.getText();
+        String packSize = txtPackSize.getText();
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+
+        itemService.addItemDetails(itemCode, description, packSize, unitPrice, qtyOnHand);
+        clearFields();
+        loadItemDetails();
+
     }
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
@@ -61,6 +85,46 @@ public class ItemFormController {
 
     }
 
+    private void clearFields(){
+        txtItemCode.clear();
+        txtDescription.clear();
+        txtPackSize.clear();
+        txtUnitPrice.clear();
+        txtQtyOnHand.clear();
+    }
+
+    private void loadItemDetails(){
+
+        itemDTOS.clear();
+        tblItemInfo.setItems(itemService.getAllItemDetails());
+
+    }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colPackSize.setCellValueFactory(new PropertyValueFactory<>("PackSize"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+
+        loadItemDetails();
+
+        tblItemInfo.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+
+            if (newValue != null){
+
+                txtItemCode.setText(newValue.getItemCode());
+                txtDescription.setText(newValue.getDescription());
+                txtPackSize.setText(newValue.getPackSize());
+                txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
+                txtQtyOnHand.setText(String.valueOf(newValue.getQtyOnHand()));
+
+            }
+
+        });
+
+    }
 }
