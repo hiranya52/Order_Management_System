@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="820.0" prefWidth="1310.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerController.CustomerFormController">
+    <children>
+        <ImageView fitHeight="820.0" fitWidth="1310.0">
+            <image>
+                <Image url="@../img/bgImg.png" />
+            </image>
+        </ImageView>
+        <AnchorPane prefHeight="68.0" prefWidth="1310.0" style="-fx-background-color: #7f695e;">
+            <children>
+                <ImageView fitHeight="55.0" fitWidth="60.0" layoutX="82.0" layoutY="2.0">
+                    <image>
+                        <Image url="@../img/cart.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="153.0" layoutY="16.0" prefHeight="35.0" prefWidth="233.0" text="GROCERY HUB" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Label layoutX="464.0" layoutY="84.0" prefHeight="39.0" prefWidth="380.0" text="Customer Informations" textFill="#1d100a">
+            <font>
+                <Font name="Arial Bold" size="34.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtCustomerID" layoutX="39.0" layoutY="171.0" prefHeight="35.0" prefWidth="220.0" promptText="Customer ID" />
+        <TextField fx:id="txtTitle" layoutX="288.0" layoutY="170.0" prefHeight="35.0" prefWidth="220.0" promptText="Title" />
+        <TextField fx:id="txtName" layoutX="540.0" layoutY="168.0" prefHeight="35.0" prefWidth="220.0" promptText="Name" />
+        <TextField fx:id="txtDOB" layoutX="789.0" layoutY="170.0" prefHeight="35.0" prefWidth="220.0" promptText="DOB" />
+        <TextField fx:id="txtSalary" layoutX="1038.0" layoutY="169.0" prefHeight="35.0" prefWidth="220.0" promptText="Salary" />
+        <TextField fx:id="txtAddress" layoutX="161.0" layoutY="227.0" prefHeight="35.0" prefWidth="220.0" promptText="Address" />
+        <TextField fx:id="txtCity" layoutX="410.0" layoutY="226.0" prefHeight="35.0" prefWidth="220.0" promptText="City" />
+        <TextField fx:id="txtProvince" layoutX="662.0" layoutY="224.0" prefHeight="35.0" prefWidth="220.0" promptText="Province" />
+        <TextField fx:id="txtPostalCode" layoutX="911.0" layoutY="226.0" prefHeight="35.0" prefWidth="220.0" promptText="Postal Code" />
+        <Button layoutX="378.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #321d12;" text="Add" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="16.0" />
+            </font>
+        </Button>
+        <Button layoutX="518.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: #321d12;" text="Update" textFill="#321d12">
+            <font>
+                <Font name="Arial Bold" size="16.0" />
+            </font>
+        </Button>
+        <Button layoutX="659.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: #321d12;" text="Delete" textFill="#321d12">
+            <font>
+                <Font name="Arial Bold" size="16.0" />
+            </font>
+        </Button>
+        <Button layoutX="799.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="110.0" style="-fx-border-color: #321d12;" text="Clear" textFill="#321d12">
+            <font>
+                <Font name="Arial Bold" size="16.0" />
+            </font>
+        </Button>
+        <TableView fx:id="tblCustomerInfo" layoutX="33.0" layoutY="382.0" prefHeight="401.0" prefWidth="1236.0">
+            <columns>
+                <TableColumn fx:id="colCustomerID" prefWidth="75.0" text="Customer ID" />
+                <TableColumn fx:id="colTitle" prefWidth="156.25737762451172" text="Title" />
+                <TableColumn fx:id="colName" prefWidth="183.74261474609375" text="Name" />
+                <TableColumn fx:id="colDOB" prefWidth="113.135009765625" text="DOB" />
+                <TableColumn fx:id="colSalary" prefWidth="147.77001953125" text="Salary" />
+                <TableColumn fx:id="colAddress" prefWidth="198.32489013671875" text="Address" />
+                <TableColumn fx:id="colCity" prefWidth="136.94512939453125" text="City" />
+                <TableColumn fx:id="colProvince" prefWidth="131.07373046875" text="Province" />
+                <TableColumn fx:id="colPostalCode" prefWidth="88.83740234375" text="Postal Code" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

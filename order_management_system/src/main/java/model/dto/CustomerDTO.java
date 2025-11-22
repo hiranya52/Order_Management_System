@@ -10,12 +10,12 @@ import lombok.*;
 @ToString
 public class CustomerDTO {
 
-    private String custID;
-    private String custTitle;
-    private String custName;
+    private String id;
+    private String title;
+    private String name;
     private String dob;
     private double salary;
-    private String custAddress;
+    private String address;
     private String city;
     private String province;
     private String postalCode;
