@@ -83,11 +83,26 @@ public class CustomerFormController implements Initializable {
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
+        String custID = txtCustomerID.getText();
+        String custTitle = txtTitle.getText();
+        String custName = txtName.getText();
+        String dob = txtDOB.getText();
+        double salary = Double.parseDouble(txtSalary.getText());
+        String custAddress = txtAddress.getText();
+        String city = txtCity.getText();
+        String province = txtProvince.getText();
+        String postalCode = txtPostalCode.getText();
+
+        customerService.addCustomerDetails(custID, custTitle, custName, dob, salary, custAddress, city, province, postalCode);
+
+        clearFields();
+        loadCustomerDetails();
+
     }
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
@@ -98,6 +113,18 @@ public class CustomerFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
 
+    }
+
+    private void clearFields(){
+        txtCustomerID.clear();
+        txtTitle.clear();
+        txtName.clear();
+        txtDOB.clear();
+        txtSalary.clear();
+        txtAddress.clear();
+        txtCity.clear();
+        txtProvince.clear();
+        txtPostalCode.clear();
     }
 
     private void loadCustomerDetails(){
