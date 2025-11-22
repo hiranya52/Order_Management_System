@@ -58,6 +58,29 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public void updateCustomerDetails(String custID, String custTitle, String custName, String dob, double salary, String custAddress, String city, String province, String postalCode) throws SQLException {
 
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            String SQL = "UPDATE customer SET CustTitle = ?, CustName = ?, DOB = ?, salary = ?, CustAddress = ?, City = ?, Province = ?, PostalCode = ? WHERE CustID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setObject(1, custTitle);
+            preparedStatement.setObject(2, custName);
+            preparedStatement.setObject(3, dob);
+            preparedStatement.setObject(4, salary);
+            preparedStatement.setObject(5, custAddress);
+            preparedStatement.setObject(6, city);
+            preparedStatement.setObject(7, province);
+            preparedStatement.setObject(8, postalCode);
+            preparedStatement.setObject(9, custID);
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

@@ -119,6 +119,21 @@ public class CustomerFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
 
+        String custID = txtCustomerID.getText();
+        String custTitle = txtTitle.getText();
+        String custName = txtName.getText();
+        String dob = txtDOB.getText();
+        double salary = Double.parseDouble(txtSalary.getText());
+        String custAddress = txtAddress.getText();
+        String city = txtCity.getText();
+        String province = txtProvince.getText();
+        String postalCode = txtPostalCode.getText();
+
+        customerService.updateCustomerDetails(custID, custTitle, custName, dob, salary, custAddress, city, province, postalCode);
+
+        loadCustomerDetails();
+        clearFields();
+
     }
 
     private void clearFields(){

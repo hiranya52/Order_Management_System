@@ -40,6 +40,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void updateCustomerDetails(String custID, String custTitle, String custName, String dob, double salary, String custAddress, String city, String province, String postalCode) {
 
+        try {
+            customerRepository.updateCustomerDetails(custID, custTitle, custName, dob, salary, custAddress, city, province, postalCode);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
