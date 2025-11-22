@@ -1,7 +1,10 @@
 package repository.impl;
 
+import db.DBConnection;
 import repository.CustomerRepository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -30,6 +33,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public ResultSet getAllCustomerDetails() throws SQLException {
-        return null;
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        String SQL = "SELECT * FROM Customer";
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+        return preparedStatement.executeQuery();
+
     }
 }

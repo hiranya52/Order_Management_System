@@ -10,6 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.CustomerDTO;
+import service.CustomerService;
+import service.impl.CustomerServiceImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +20,7 @@ public class CustomerFormController implements Initializable {
 
     ObservableList<CustomerDTO> customerDTOS = FXCollections.observableArrayList();
 
+    CustomerService customerService = new CustomerServiceImpl();
 
 
     @FXML
@@ -97,7 +100,12 @@ public class CustomerFormController implements Initializable {
 
     }
 
+    private void loadCustomerDetails(){
 
+        customerDTOS.clear();
+        tblCustomerInfo.setItems(customerService.getAllCustomerDetails());
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -112,9 +120,7 @@ public class CustomerFormController implements Initializable {
         colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
         colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
 
-        tblCustomerInfo.setItems(customerDTOS);
-
-        
+        loadCustomerDetails();
 
 
     }
