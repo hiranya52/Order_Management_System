@@ -38,6 +38,12 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void updateItemDetails(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) {
 
+        try {
+            itemRepository.updateItem(itemCode, description, PackSize, unitPrice, qtyOnHand);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

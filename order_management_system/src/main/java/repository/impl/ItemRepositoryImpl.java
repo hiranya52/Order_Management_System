@@ -54,6 +54,26 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void updateItem(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) throws SQLException {
 
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            String SQL = "UPDATE item SET Description = ?, PackSize = ?, UnitPrice = ?, QtyOnHand = ? WHERE ItemCode = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setObject(1, description);
+            preparedStatement.setObject(2, PackSize);
+            preparedStatement.setObject(3, unitPrice);
+            preparedStatement.setObject(4, qtyOnHand);
+            preparedStatement.setObject(5, itemCode);
+
+            preparedStatement.executeUpdate();
+
+        } catch (
+                SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
