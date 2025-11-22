@@ -29,6 +29,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomerDetails(String custID) {
 
+        try {
+            customerRepository.deleteCustomerDetails(custID);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
