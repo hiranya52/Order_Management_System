@@ -50,7 +50,33 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO viewCustomerDetails(String custID) {
-        return null;
+
+        CustomerDTO customerDTO = null;
+
+        try {
+
+            ResultSet rst = customerRepository.viewCustomerDetails(custID);
+
+            if (rst.next()) {
+                customerDTO = new CustomerDTO(
+                        rst.getString("CustID"),
+                        rst.getString("CustTitle"),
+                        rst.getString("CustName"),
+                        rst.getString("DOB"),
+                        rst.getDouble("salary"),
+                        rst.getString("CustAddress"),
+                        rst.getString("City"),
+                        rst.getString("Province"),
+                        rst.getString("PostalCode")
+                );
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return customerDTO;
+
     }
 
     @Override

@@ -85,7 +85,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public ResultSet viewCustomerDetails(String custID) throws SQLException {
-        return null;
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        String SQL = "SELECT * FROM customer WHERE CustID = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(SQL);
+        pstm.setObject(1, custID);
+
+        return pstm.executeQuery();
+
     }
 
     @Override
