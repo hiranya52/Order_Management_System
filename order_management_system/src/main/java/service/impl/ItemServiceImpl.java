@@ -27,6 +27,12 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void deleteItemDetails(String itemCode) {
 
+        try {
+            itemRepository.deleteItem(itemCode);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

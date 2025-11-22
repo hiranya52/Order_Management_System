@@ -38,6 +38,17 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void deleteItem(String itemCode) throws SQLException {
 
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement("DELETE FROM item WHERE ItemCode = ?");
+
+            pstm.setObject(1,itemCode);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
